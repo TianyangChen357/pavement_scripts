@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('--video_dir',type=str,default='/home/cagis/pavement/video/4K120fpsLinear.MP4')
 parser.add_argument('--out_folder_dir',type=str,default='/home/cagis/pavement/frame')
 parser.add_argument('--start_index',type=int,default=0)
-parser.add_argument('--nframes',type=int,default=1000)
+parser.add_argument('--nframes',type=int,default=10)
 args=parser.parse_args()
 
 video_dir=args.video_dir
@@ -24,11 +24,10 @@ cam.set(cv2.CAP_PROP_POS_FRAMES,start_index)
 
 print(f'video directory: {video_dir}')
 length=cam.get(cv2.CAP_PROP_FRAME_COUNT)
-print(f' # frame in total: {length}')
+print(f'number of frames: {length}')
 fps=length=cam.get(cv2.CAP_PROP_FPS)
 print(f'frame per second: {fps}')
-shutter=length=cam.get(cv2.CAP_PROP_XI_SHUTTER_TYPE)
-print(shutter)
+
 
 currentframe=start_index
 for i in range(nframes):
