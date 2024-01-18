@@ -2,6 +2,18 @@ import cv2
 import os
 import time
 import numpy as np
+import argparse
+
+parser = argparse.ArgumentParser(
+                    prog='pavement data processing',
+                    description='extracting frames from video')
+parser.add_argument('--video_dir',type=str,default='name a video directory')
+parser.add_argument('--out_dir',type=str,default='name an out directory')
+parser.add_argument('--start',type=int,default=0)
+parser.add_argument('--length',type=int,default=1000)
+args=parser.parse_args()
+
+
 basedir=r'/home/cagis/pavement'
 video_folder=os.path.join(basedir,'video')
 frame_folder=os.path.join(basedir,'frame')
