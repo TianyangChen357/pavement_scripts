@@ -27,7 +27,6 @@ nfps=args.nfps
 cam = cv2.VideoCapture(video_dir)
 # frame
 cam.set(cv2.CAP_PROP_POS_FRAMES,start_index)
-
 print(f'video directory: {video_dir}')
 length=cam.get(cv2.CAP_PROP_FRAME_COUNT)
 print(f'number of frames: {length}')
