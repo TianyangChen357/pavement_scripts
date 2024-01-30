@@ -30,31 +30,40 @@ cam.set(cv2.CAP_PROP_POS_FRAMES,start_index)
 print(f'video directory: {video_dir}')
 length=cam.get(cv2.CAP_PROP_FRAME_COUNT)
 print(f'number of frames: {length}')
-fps=length=cam.get(cv2.CAP_PROP_FPS)
+fps=cam.get(cv2.CAP_PROP_FPS)
 print(f'frame per second: {fps}')
 
+focus=cam.get(cv2.CAP_PROP_FOCUS)
+print(f'focus: {focus}')
 
-currentframe = start_index
-if sampling:
-    nframes=ns*nfps
-    for i in range(nframes):
-        out_name = os.path.join(out_folder_dir, f'frame{currentframe}.jpg')
-        ret, frame = cam.read()
-        if ret==0:
-            break
-        cv2.imwrite(out_name, frame)
-        interval=int(fps/nfps)
-        currentframe+=interval
-        cam.set(cv2.CAP_PROP_POS_FRAMES, currentframe)
+focal_length=cam.get(cv2.CAP_PROP_OPENNI_FOCAL_LENGTH)
+print(f'focal_length: {focal_length}')
 
+width=cam.get(cv2.CAP_PROP_FRAME_WIDTH)
+height=cam.get(cv2.CAP_PROP_FRAME_HEIGHT)
+print(f'width and height: {width} {height}')
 
-
-else:
-    for i in range(nframes):
-        out_name=os.path.join(out_folder_dir,f'frame{currentframe}.jpg')
-        ret,frame=cam.read()
-        if ret==0:
-            break
-        cv2.imwrite(out_name, frame)
-        currentframe+=1
+# currentframe = start_index
+# if sampling:
+#     nframes=ns*nfps
+#     for i in range(nframes):
+#         out_name = os.path.join(out_folder_dir, f'frame{currentframe}.jpg')
+#         ret, frame = cam.read()
+#         if ret==0:
+#             break
+#         cv2.imwrite(out_name, frame)
+#         interval=int(fps/nfps)
+#         currentframe+=interval
+#         cam.set(cv2.CAP_PROP_POS_FRAMES, currentframe)
+#
+#
+#
+# else:
+#     for i in range(nframes):
+#         out_name=os.path.join(out_folder_dir,f'frame{currentframe}.jpg')
+#         ret,frame=cam.read()
+#         if ret==0:
+#             break
+#         cv2.imwrite(out_name, frame)
+#         currentframe+=1
 
